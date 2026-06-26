@@ -1,0 +1,11 @@
+streamlit
+faiss-cpu
+sentence-transformers
+transformers
+torch
+PyPDF2
+pandas
+numpy
+scikit-learn
+python-dotenv
+requests
