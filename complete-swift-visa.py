@@ -21,192 +21,188 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# --- Custom CSS for ChatGPT Look ---
 st.markdown("""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
-/* ================= GLOBAL ================= */
-
-*{
-    font-family:'Inter',sans-serif !important;
-}
-
-.stApp{
-    background:#FFFFFF !important;
-}
-
-.main{
-    background:#FFFFFF !important;
-}
-
-#MainMenu,
-header,
-footer{
-    visibility:hidden;
-}
-
-/* ================= SIDEBAR ================= */
-
-[data-testid="stSidebar"]{
-    background:#F8FAFC !important;
-    border-right:1px solid #E5E7EB;
-}
-
-[data-testid="stSidebar"] *{
-    color:#111827 !important;
-}
-
-/* ================= TEXT ================= */
-
-h1,h2,h3,h4,h5,h6{
-    color:#111827 !important;
-    font-weight:700 !important;
-}
-
-p,label,span,div{
-    color:#374151;
-}
-
-/* ================= BUTTONS ================= */
-
-.stButton button{
-    background:#2563EB;
-    color:white !important;
-
-    border:none;
-    border-radius:10px;
-
-    padding:0.6rem 1rem;
-    min-height:42px;
-
-    transition:0.25s;
-
-    white-space:normal;
-    word-break:break-word;
-}
-
-.stButton button:hover{
-    background:#1D4ED8;
-    transform:translateY(-1px);
-}
-
-/* Secondary Buttons */
-
-button[kind="secondary"]{
-    background:white !important;
-    color:#111827 !important;
-    border:1px solid #D1D5DB !important;
-}
-
-button[kind="secondary"]:hover{
-    background:#F3F4F6 !important;
-}
-
-/* ================= CHAT ================= */
-
-.stChatMessage[data-testid*="user"] [data-testid="stChatMessageContent"]{
-    background:#E8F0FE !important;
-    border-radius:14px;
-    color:#111827 !important;
-}
-
-.stChatMessage[data-testid*="assistant"] [data-testid="stChatMessageContent"]{
-    background:#FFFFFF !important;
-    border:1px solid #E5E7EB;
-    border-radius:14px;
-    color:#111827 !important;
-}
-
-/* ================= CHAT INPUT ================= */
-
-[data-testid="stChatInput"]{
-    background:white !important;
-}
-
-[data-testid="stChatInput"] textarea{
-    background:white !important;
-    color:#111827 !important;
-    border:1px solid #D1D5DB !important;
-    border-radius:12px !important;
-}
-
-textarea::placeholder{
-    color:#9CA3AF !important;
-}
-
-/* ================= INPUTS ================= */
-
-.stTextInput input,
-.stTextArea textarea{
-    background:white !important;
-    color:#111827 !important;
-    border:1px solid #D1D5DB !important;
-}
-
-/* ================= METRICS ================= */
-
-[data-testid="metric-container"]{
-    background:#F9FAFB;
-    border:1px solid #E5E7EB;
-    border-radius:12px;
-    padding:18px;
-}
-
-/* ================= EXPANDER ================= */
-
-details{
-    background:#FFFFFF;
-    border:1px solid #E5E7EB;
-    border-radius:12px;
-    margin-bottom:12px;
-}
-
-.streamlit-expanderHeader{
-    background:#F9FAFB !important;
-    color:#111827 !important;
-    font-weight:600;
-}
-
-/* ================= BADGES ================= */
-
-.badge-success{
-    background:#DCFCE7;
-    color:#166534;
-    padding:4px 10px;
-    border-radius:8px;
-}
-
-.badge-warning{
-    background:#FEF3C7;
-    color:#92400E;
-    padding:4px 10px;
-    border-radius:8px;
-}
-
-/* ================= SCROLLBAR ================= */
-
-::-webkit-scrollbar{
-    width:8px;
-}
-
-::-webkit-scrollbar-thumb{
-    background:#CBD5E1;
-    border-radius:10px;
-}
-
-::-webkit-scrollbar-track{
-    background:#F8FAFC;
-}
-
-/* ================= HORIZONTAL LINE ================= */
-
-hr{
-    border-color:#E5E7EB !important;
-}
-
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    
+    * {
+        font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    }
+    
+    .main {
+        background: white !important;
+    }
+    
+    #MainMenu, footer, header {
+        visibility: hidden;
+    }
+    
+    
+    [data-testid="stSidebar"] {
+        background-color: #202123 !important;
+    }
+    
+    [data-testid="stSidebar"] * {
+        color: #ECECF1 !important;
+    }
+    
+    h1, h2, h3 {
+        color: #202123 !important;
+        font-weight: 600 !important;
+    }
+    
+    .stButton button {
+        border-radius: 8px !important;
+        white-space: normal !important;
+        word-wrap: break-word !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        padding: 0.5rem 1rem !important;
+        min-height: 2.5rem !important;
+        line-height: 1.4 !important;
+    }
+    
+    button[data-testid="baseButton-primary"] {
+        background: #10A37F !important;
+        color: white !important;
+    }
+    
+    .stChatMessage[data-testid*="user"] [data-testid="stChatMessageContent"] {
+        background: #F7F7F8 !important;
+        border-radius: 12px !important;
+    }
+    
+    .stChatMessage[data-testid*="assistant"] [data-testid="stChatMessageContent"] {
+        background: white !important;
+        border-radius: 12px !important;
+        border: 1px solid #E5E5E5 !important;
+    }
+    
+    .badge-success { background: #D1FAE5; color: #065F46; }
+    .badge-warning { background: #FEF3C7; color: #92400E; }
+    
+    /* Fix button spacing to prevent overlap */
+    .stButton {
+        margin-bottom: 0.5rem !important;
+    }
+    
+    /* Ensure expander content has proper spacing */
+    .streamlit-expanderContent {
+        padding: 1rem !important;
+    }
+    
+    /* Fix expander header to prevent arrow overlap */
+    .streamlit-expanderHeader {
+        padding: 0.75rem 1rem !important;
+        padding-left: 2.5rem !important;
+    }
+    
+    .streamlit-expanderHeader svg {
+        margin-right: 0.75rem !important;
+    }
+    
+    /* Ensure expander text doesn't overlap with arrow */
+    details summary {
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.5rem !important;
+    }
+    
+    /* Hide the keyboard_arrow_down text completely */
+    .streamlit-expanderHeader {
+        overflow: hidden !important;
+        position: relative !important;
+    }
+    
+    /* Force hide icon text by setting font size to 0 on icon wrapper */
+    .streamlit-expanderHeader [role="button"] > div:first-child {
+        font-size: 0 !important;
+        width: 24px !important;
+        height: 24px !important;
+        overflow: hidden !important;
+    }
+    
+    /* Keep SVG visible */
+    .streamlit-expanderHeader svg {
+        font-size: initial !important;
+        width: 24px !important;
+        height: 24px !important;
+    }
+    
+    /* Alternative: use text-indent to push text off screen */
+    .streamlit-expanderHeader [role="button"] > div:first-child > p {
+        text-indent: -9999px !important;
+        position: absolute !important;
+        left: -9999px !important;
+    }
+    
+    /* More aggressive: hide any p tag inside the icon container */
+    details summary > div:first-child p {
+        visibility: hidden !important;
+        width: 0 !important;
+        height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        font-size: 0 !important;
+        line-height: 0 !important;
+    }
+    
+    /* Ensure proper spacing for expander label */
+    details summary > div:last-child {
+        margin-left: 0.5rem !important;
+    }
+    
+    /* Hide the Material Icon text span */
+    span[data-testid="stIconMaterial"] {
+        font-size: 0 !important;
+        width: 0 !important;
+        height: 0 !important;
+        display: none !important;
+    }
+    
+    /* Completely hide the icon text paragraph */
+    .streamlit-expanderHeader [role="button"] > div:first-child p {
+        position: absolute !important;
+        left: -10000px !important;
+        width: 1px !important;
+        height: 1px !important;
+        overflow: hidden !important;
+    }
+    
+    /* Strictly constrain icon container */
+    .streamlit-expanderHeader [role="button"] > div:first-child {
+        width: 24px !important;
+        max-width: 24px !important;
+        min-width: 24px !important;
+        height: 24px !important;
+        overflow: hidden !important;
+        flex-shrink: 0 !important;
+        margin-right: 8px !important;
+    }
+    
+    /* Make expander button use flexbox properly */
+    .streamlit-expanderHeader [role="button"] {
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+    }
+    
+    /* Ensure label doesn't wrap and stays on one line */
+    .streamlit-expanderHeader [role="button"] > div:last-child {
+        flex: 1 !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+    
+    /* Keep SVG visible */
+    .streamlit-expanderHeader svg {
+        display: block !important;
+        width: 24px !important;
+        height: 24px !important;
+    }
 </style>
-""", unsafe_allow_html=True)
+""", unsafe_allow_html=True) 
 
 # --- Configuration ---
 DATA_DIR = 'data'
