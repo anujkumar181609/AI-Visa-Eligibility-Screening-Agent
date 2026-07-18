@@ -17,7 +17,7 @@ An AI-powered Retrieval-Augmented Generation (RAG) application that helps users 
 ## 🌐 Live Demo
 
 **Application:**  
-https://ai-visa-eligibility-screening-agent-dzlgzhnhh6jrwiafuemgyh.streamlit.app/ :contentReference[oaicite:0]{index=0}
+https://ai-visa-eligibility-screening-agent-dzlgzhnhh6jrwiafuemgyh.streamlit.app/
 
 ---
 
