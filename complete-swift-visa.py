@@ -23,186 +23,253 @@ st.set_page_config(
 
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-    
-    * {
-        font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-    }
-    
-    .main {
-        background: white !important;
-    }
-    
-    #MainMenu, footer, header {
-        visibility: hidden;
-    }
-    
-    
-    [data-testid="stSidebar"] {
-        background-color: #202123 !important;
-    }
-    
-    [data-testid="stSidebar"] * {
-        color: #ECECF1 !important;
-    }
-    
-    h1, h2, h3 {
-        color: #202123 !important;
-        font-weight: 600 !important;
-    }
-    
-    .stButton button {
-        border-radius: 8px !important;
-        white-space: normal !important;
-        word-wrap: break-word !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-        padding: 0.5rem 1rem !important;
-        min-height: 2.5rem !important;
-        line-height: 1.4 !important;
-    }
-    
-    button[data-testid="baseButton-primary"] {
-        background: #10A37F !important;
-        color: white !important;
-    }
-    
-    .stChatMessage[data-testid*="user"] [data-testid="stChatMessageContent"] {
-        background: #F7F7F8 !important;
-        border-radius: 12px !important;
-    }
-    
-    .stChatMessage[data-testid*="assistant"] [data-testid="stChatMessageContent"] {
-        background: white !important;
-        border-radius: 12px !important;
-        border: 1px solid #E5E5E5 !important;
-    }
-    
-    .badge-success { background: #D1FAE5; color: #065F46; }
-    .badge-warning { background: #FEF3C7; color: #92400E; }
-    
-    /* Fix button spacing to prevent overlap */
-    .stButton {
-        margin-bottom: 0.5rem !important;
-    }
-    
-    /* Ensure expander content has proper spacing */
-    .streamlit-expanderContent {
-        padding: 1rem !important;
-    }
-    
-    /* Fix expander header to prevent arrow overlap */
-    .streamlit-expanderHeader {
-        padding: 0.75rem 1rem !important;
-        padding-left: 2.5rem !important;
-    }
-    
-    .streamlit-expanderHeader svg {
-        margin-right: 0.75rem !important;
-    }
-    
-    /* Ensure expander text doesn't overlap with arrow */
-    details summary {
-        display: flex !important;
-        align-items: center !important;
-        gap: 0.5rem !important;
-    }
-    
-    /* Hide the keyboard_arrow_down text completely */
-    .streamlit-expanderHeader {
-        overflow: hidden !important;
-        position: relative !important;
-    }
-    
-    /* Force hide icon text by setting font size to 0 on icon wrapper */
-    .streamlit-expanderHeader [role="button"] > div:first-child {
-        font-size: 0 !important;
-        width: 24px !important;
-        height: 24px !important;
-        overflow: hidden !important;
-    }
-    
-    /* Keep SVG visible */
-    .streamlit-expanderHeader svg {
-        font-size: initial !important;
-        width: 24px !important;
-        height: 24px !important;
-    }
-    
-    /* Alternative: use text-indent to push text off screen */
-    .streamlit-expanderHeader [role="button"] > div:first-child > p {
-        text-indent: -9999px !important;
-        position: absolute !important;
-        left: -9999px !important;
-    }
-    
-    /* More aggressive: hide any p tag inside the icon container */
-    details summary > div:first-child p {
-        visibility: hidden !important;
-        width: 0 !important;
-        height: 0 !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        font-size: 0 !important;
-        line-height: 0 !important;
-    }
-    
-    /* Ensure proper spacing for expander label */
-    details summary > div:last-child {
-        margin-left: 0.5rem !important;
-    }
-    
-    /* Hide the Material Icon text span */
-    span[data-testid="stIconMaterial"] {
-        font-size: 0 !important;
-        width: 0 !important;
-        height: 0 !important;
-        display: none !important;
-    }
-    
-    /* Completely hide the icon text paragraph */
-    .streamlit-expanderHeader [role="button"] > div:first-child p {
-        position: absolute !important;
-        left: -10000px !important;
-        width: 1px !important;
-        height: 1px !important;
-        overflow: hidden !important;
-    }
-    
-    /* Strictly constrain icon container */
-    .streamlit-expanderHeader [role="button"] > div:first-child {
-        width: 24px !important;
-        max-width: 24px !important;
-        min-width: 24px !important;
-        height: 24px !important;
-        overflow: hidden !important;
-        flex-shrink: 0 !important;
-        margin-right: 8px !important;
-    }
-    
-    /* Make expander button use flexbox properly */
-    .streamlit-expanderHeader [role="button"] {
-        display: flex !important;
-        align-items: center !important;
-        gap: 8px !important;
-    }
-    
-    /* Ensure label doesn't wrap and stays on one line */
-    .streamlit-expanderHeader [role="button"] > div:last-child {
-        flex: 1 !important;
-        white-space: nowrap !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-    }
-    
-    /* Keep SVG visible */
-    .streamlit-expanderHeader svg {
-        display: block !important;
-        width: 24px !important;
-        height: 24px !important;
-    }
+
+/* ===========================
+   GOOGLE FONT
+=========================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+*{
+    font-family:'Inter',sans-serif !important;
+}
+
+/* ===========================
+   APP
+=========================== */
+
+.stApp{
+    background:#F5F6F8;
+}
+
+.main{
+    background:#F5F6F8;
+    padding-top:2rem;
+}
+
+#MainMenu,
+header,
+footer{
+    visibility:hidden;
+}
+
+/* ===========================
+   SIDEBAR
+=========================== */
+
+[data-testid="stSidebar"]{
+    background:#1F2023;
+    border-right:none;
+}
+
+[data-testid="stSidebar"] *{
+    color:#ECECEC !important;
+}
+
+[data-testid="stSidebar"] hr{
+    border-color:#33353A !important;
+}
+
+/* ===========================
+   HEADINGS
+=========================== */
+
+h1{
+    font-size:52px !important;
+    font-weight:800 !important;
+    color:#1F2937;
+}
+
+h2{
+    font-size:38px !important;
+    font-weight:700 !important;
+    color:#1F2937;
+}
+
+h3{
+    font-size:28px !important;
+    font-weight:700 !important;
+    color:#1F2937;
+}
+
+p,label{
+    color:#5F6368 !important;
+}
+
+/* ===========================
+   CARDS
+=========================== */
+
+div[data-testid="stVerticalBlock"]>div:has(div[data-testid="metric-container"]){
+    background:white;
+    border-radius:18px;
+    padding:22px;
+    border:1px solid #E5E7EB;
+    box-shadow:0 2px 8px rgba(0,0,0,.04);
+}
+
+/* ===========================
+   METRICS
+=========================== */
+
+[data-testid="metric-container"]{
+    background:white;
+    border:none;
+    box-shadow:none;
+}
+
+[data-testid="metric-container"] label{
+    color:#6B7280 !important;
+}
+
+[data-testid="metric-container"] [data-testid="stMetricValue"]{
+    color:#111827;
+    font-size:42px;
+    font-weight:700;
+}
+
+/* ===========================
+   FILE UPLOADER
+=========================== */
+
+[data-testid="stFileUploader"]{
+    background:white;
+    border:2px dashed #D1D5DB;
+    border-radius:18px;
+    padding:25px;
+}
+
+[data-testid="stFileUploader"]:hover{
+    border-color:#2563EB;
+}
+
+/* ===========================
+   SUCCESS MESSAGE
+=========================== */
+
+.stAlert{
+    border:none !important;
+    border-radius:14px !important;
+}
+
+div[data-baseweb="notification"]{
+    border-radius:14px !important;
+}
+
+/* ===========================
+   BUTTONS
+=========================== */
+
+.stButton>button{
+    background:#2563EB;
+    color:white;
+    border:none;
+    border-radius:12px;
+    padding:.65rem 1.4rem;
+    font-weight:600;
+    transition:.25s;
+}
+
+.stButton>button:hover{
+    background:#1D4ED8;
+    transform:translateY(-1px);
+}
+
+/* ===========================
+   INPUTS
+=========================== */
+
+.stTextInput input,
+.stTextArea textarea{
+    background:white;
+    border:1px solid #D1D5DB;
+    border-radius:12px;
+    color:#111827;
+}
+
+.stTextInput input:focus,
+.stTextArea textarea:focus{
+    border-color:#2563EB !important;
+}
+
+/* ===========================
+   CHAT
+=========================== */
+
+.stChatMessage{
+    background:white;
+    border-radius:16px;
+    padding:18px;
+    border:1px solid #E5E7EB;
+    margin-bottom:14px;
+}
+
+.stChatInput{
+    background:white;
+}
+
+[data-testid="stChatInput"] textarea{
+    background:white !important;
+    border:1px solid #D1D5DB !important;
+    border-radius:14px !important;
+}
+
+/* ===========================
+   EXPANDERS
+=========================== */
+
+details{
+    background:white;
+    border-radius:16px;
+    border:1px solid #E5E7EB;
+}
+
+.streamlit-expanderHeader{
+    background:#FAFAFA;
+}
+
+/* ===========================
+   TABLES
+=========================== */
+
+table{
+    background:white;
+    border-radius:14px;
+    overflow:hidden;
+}
+
+/* ===========================
+   SCROLLBAR
+=========================== */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#C9CDD4;
+    border-radius:20px;
+}
+
+::-webkit-scrollbar-track{
+    background:#F5F6F8;
+}
+
+/* ===========================
+   LINKS
+=========================== */
+
+a{
+    color:#2563EB !important;
+    text-decoration:none;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
 </style>
-""", unsafe_allow_html=True) 
+""", unsafe_allow_html=True)
 
 # --- Configuration ---
 DATA_DIR = 'data'
