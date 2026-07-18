@@ -199,17 +199,19 @@ The AI generates a grounded response with source citations.
 ```
 SwiftVisa/
 │
+├── .devcontainer/
+├── .streamlit/
 ├── data/
-│   ├── visa_documents.pdf
+│   ├── UK student visa.pdf
 │
 ├── output/
 │   ├── all_chunks.jsonl
 │   ├── chunks_with_embeddings.jsonl
 │
-├── app.py
+├── complete-swift-visa.py
 ├── requirements.txt
 ├── README.md
-└── assets/
+└── screenshots/
 ```
 
 ---
