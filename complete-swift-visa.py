@@ -8,7 +8,7 @@ import PyPDF2
 import re
 import unicodedata
 import hashlib
-from transformers import AutoTokenizer, pipeline
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 from typing import List, Dict, Any
 import glob
 from datetime import datetime
@@ -211,7 +211,7 @@ OUTPUT_DIR = 'output'
 CHUNKS_FILE = os.path.join(OUTPUT_DIR, 'all_chunks.jsonl')
 EMBEDDINGS_FILE = os.path.join(OUTPUT_DIR, 'chunks_with_embeddings.jsonl')
 EMBEDDING_MODEL = 'sentence-transformers/all-MiniLM-L6-v2'
-GENERATION_MODEL = 'google/flan-t5-base'
+GENERATION_MODEL = 'google/flan-t5-small'
 MAX_TOKENS = 256
 OVERLAP_TOKENS = 32
 TOP_K_RESULTS = 5
@@ -383,18 +383,9 @@ def generate_embeddings(input_file: str, output_file: str, embedding_model):
 
 @st.cache_resource
 def load_generator_pipeline():
-    """Load text generation pipeline"""
-    try:
-        gen_pipeline = pipeline(
-            'text2text-generation',
-            model=GENERATION_MODEL,
-            device=-1,
-            max_length=512
-        )
-        return gen_pipeline
-    except Exception as e:
-        st.warning(f"Could not load generation model: {e}")
-        return None
+    tokenizer = AutoTokenizer.from_pretrained(GENERATION_MODEL)
+    model = AutoModelForSeq2SeqLM.from_pretrained(GENERATION_MODEL)
+    return tokenizer, model
 
 class MultiDocRAGPipeline:
     def __init__(self, embeddings_file: str, embedding_model):
