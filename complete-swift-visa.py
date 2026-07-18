@@ -30,7 +30,7 @@ st.markdown("""
     }
     
     .main {
-        background: white !important;
+        background: white important;
     }
     
     #MainMenu, footer, header {
