@@ -477,7 +477,7 @@ if 'rag_initialized' not in st.session_state:
 # --- Sidebar Navigation ---
 with st.sidebar:
     st.markdown("<h1 style='color: white; text-align: center;'>SwiftVisa</h1>", unsafe_allow_html=True)
-    st.markdown("<p style='color: rgba(255,255,255,0.8); text-align: center; margin-top: -1rem;'>AI-Powered Visa Assistant</p>", unsafe_allow_html=True)
+    st.markdown("<p style='color: rgba(255,255,255,0.8); text-align: center; margin-top: -1rem;'>AI-Powered Visa Assistant<br>Developed by Anuj Kumar</p>", unsafe_allow_html=True)
     st.markdown("<hr style='margin: 1.5rem 0;'>", unsafe_allow_html=True)
     
     page = st.radio(
